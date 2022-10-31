@@ -12,6 +12,7 @@ import '../MM/MM.dart';
 import '../MM/MMWidget.dart';
 import '../TTM/TTMItem.dart';
 import '../TTM/TTMUser.dart';
+import '../bottomAPPBar.dart';
 import 'edit_vaccine.dart';
 
 
@@ -243,7 +244,9 @@ class _VaccinePageState extends State<VaccinePage>{
 
 
   void _navigateToAddVaccineScreen(BuildContext context) {
-    Navigator.of(context).push(MaterialPageRoute(builder: (context) => AddVaccine( user , item )))
+    // Navigator.of(context).push(MaterialPageRoute(builder: (context) =>BottomAPPBar( 1 , child: AddExpense( _user , _item )))).then((_)
+    // Navigator.of(context).push(MaterialPageRoute(builder: (context) => AddVaccine( user , item )))
+     Navigator.of(context).push(MaterialPageRoute(builder: (context) =>BottomAPPBar( 1 , child: AddVaccine( user , item ))))
     .then((_){
       setState(() {
 
@@ -322,7 +325,7 @@ class _VaccinePageState extends State<VaccinePage>{
     body = Padding( padding: EdgeInsets.all(10.piw), child :body);
     //
     return Scaffold(
-
+      resizeToAvoidBottomInset: false ,
       appBar:  AppBar(title: Text('疫苗施打'),
       centerTitle: true ,),
  /*

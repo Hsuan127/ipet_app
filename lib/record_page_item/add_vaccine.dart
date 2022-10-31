@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 
+import '../MM/HYSizeFit.dart';
 import '../MM/MM.dart';
 import '../TTM/TTMItem.dart';
 import '../TTM/TTMUser.dart';
@@ -82,8 +83,9 @@ class _AddVaccine extends State<AddVaccine> {
         throw "未輸入日期" ;
       await item.addVaccine( TTMVaccine( 0 , _vaccineController.text ,  DateTime.parse( _dateController.text ),
           _descriptionController.text , false ));
-      MM.MessageBox( context , "OK" ).then((_)
+      MM.MessageBox( context , "新增完成" ).then((_)
           => Navigator.of(context).pop() );
+
     }catch( e )
     {
       MM.MessageBox( context , e.toString() );
@@ -166,8 +168,13 @@ class _AddVaccine extends State<AddVaccine> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        centerTitle : true ,
+        title:  const Text('增加疫苗施打') ,
+
+      ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(60.0),
+        padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 10.piw),
         child: FormBuilder(
           key: _formKey,
           onChanged: () => print("Form has been changed."),
@@ -192,6 +199,7 @@ class _AddVaccine extends State<AddVaccine> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
+                    if( false )
                     Align(
                       alignment: Alignment.centerLeft,
                       child: Container(
@@ -200,7 +208,7 @@ class _AddVaccine extends State<AddVaccine> {
                         ),
                       ),
                     ),
-
+                    if( false )
                     Divider(
                       color: Colors.grey[400],
                       height: 10,
@@ -210,6 +218,19 @@ class _AddVaccine extends State<AddVaccine> {
                     // SizedBox(
                     //   height: 20,
                     // ),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Container(
+                        child: Text('疫苗細項',
+                            style: TextStyle(fontSize: 24,)
+                        ),
+                      ),
+                    ),
+                    Divider(
+                      color: Colors.grey[400],
+                      height: 10,
+                      thickness: 2,
+                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
@@ -362,10 +383,6 @@ class _AddVaccine extends State<AddVaccine> {
                     ElevatedButton(
                       onPressed: () {
                         _submitForm();
-                        if (_formKey.currentState!.validate()) {
-                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                              content: Text('紀錄已儲存')));
-                        }
                       },
                       child: const Text('送出', style: TextStyle(fontSize: 20),
                       ),

@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 
+import '../main.dart';
 import '../MM/MM.dart';
 import '../MM/MMWidget.dart';
 import '../MM/MMWidgetSelect.dart';
@@ -13,6 +14,7 @@ import '../MMView/ShitCardStateView.dart';
 import '../MMView/WeightCardStateView.dart';
 import '../TTM/TTMItem.dart';
 import '../TTM/TTMPieCondition.dart';
+import '../bottomAPPBar.dart';
 
 class Condition extends StatelessWidget{
   Condition( this.item , {Key? key}) : super(key: key);
@@ -23,13 +25,18 @@ class Condition extends StatelessWidget{
   Widget build(BuildContext context) {
 
     //
-    Widget body = Center(
-      child: MM.newColumn([
+    Widget body = Container(
+      height: MediaQuery.of(context).size.height * 0.75,
+       child:
+       MM.newColumn(
+           [
         WeightCard(this.item, pieCondition.getDatas(0)),
         ShitCard(this.item, pieCondition.getDatas(1)),
         ActivityCard(this.item,pieCondition.getDatas(2)),
         DietCard( this.item , pieCondition.getDatas(3)),
-      ]));
+      ],
+
+       ));
       
       //
     body = Padding(padding: EdgeInsets.all( 20 ) ,
@@ -162,8 +169,8 @@ class _WeightCardState extends State<WeightCard>
 
                     TextButton(
                       onPressed: (){
-                          Navigator.of(context)
-                              .push(MaterialPageRoute(builder: (context) => WeightCardStateView( this.item , this.data )))
+                        Navigator.of(context).push(MaterialPageRoute(builder: (context) =>BottomAPPBar( 1 , child: WeightCardStateView( this.item , this.data ))))
+                        //  Navigator.of(context).push(MaterialPageRoute(builder: (context) => WeightCardStateView( this.item , this.data )))
                               .then((value)
                               {
                                 setState(() {
@@ -301,8 +308,8 @@ class _ShitCardState extends State<ShitCard>{
                   Text('大便狀況', style: TextStyle(fontSize: 24,)),
                   TextButton(
                     onPressed: (){
-                      Navigator.of(context)
-                          .push(MaterialPageRoute(builder: (context) => ShitCardStateView( this.item , this.data )))
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) =>BottomAPPBar( 1 , child: ShitCardStateView( this.item , this.data ))))
+                 //     Navigator.of(context).push(MaterialPageRoute(builder: (context) => ShitCardStateView( this.item , this.data )))
                           .then((value)
                       {
                         setState(() {
@@ -431,8 +438,8 @@ class _ActivityCardState extends State<ActivityCard>
                   Text('活動量', style: TextStyle(fontSize: 24,)),
                   TextButton(
                     onPressed: (){
-                      Navigator.of(context)
-                          .push(MaterialPageRoute(builder: (context) => ActivityCardStateView( this.item , this.data )))
+         //             Navigator.of(context).push(MaterialPageRoute(builder: (context) => ActivityCardStateView( this.item , this.data )))
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) =>BottomAPPBar( 1 , child: ActivityCardStateView( this.item , this.data ))))
                           .then((value)
                       {
                         setState(() {
@@ -555,9 +562,8 @@ class _DietCardState extends State<DietCard>{
                   Text('飲食狀況', style: TextStyle(fontSize: 24,)),
                   TextButton(
                     onPressed: (){
-                      Navigator.of(context)
-                          .push(MaterialPageRoute(builder: (context) => FoodCardStateView( this.item , this.data )))
-                          .then((value)
+           //           Navigator.of(context).push(MaterialPageRoute(builder: (context) => FoodCardStateView( this.item , this.data ))).then((value)
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) =>BottomAPPBar( 1 , child: FoodCardStateView( this.item , this.data )))).then((_)
                       {
                         setState(() {
 

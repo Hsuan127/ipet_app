@@ -14,3 +14,10 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+<<<<<<< HEAD
+=======
+
+## Flutter SDK
+
+SDK version：3.3.1
+>>>>>>> 9b461109c97ad45f8a893e173454dac28b63ee62
